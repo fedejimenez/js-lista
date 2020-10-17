@@ -15,15 +15,17 @@ var busqueda = document.querySelector("#busqueda");
 // busqueda.addEventListener("keyup", filtrarItems);
 
 // Agregar Item
+// function agregarItem(e) {  2- FORMA
+
 // 3° FORMA
-form.onsubmit = function agregarItem(e) {
+form.onsubmit = function(e) {
   e.preventDefault();
 
   // Obtener valor de entrada
-  var nuevoItem = document.querySelector("#item").value;
+  let nuevoItem = document.querySelector("#item").value;
 
   // Crear nuevo elemento li
-  var li = document.createElement("li");
+  let li = document.createElement("li");
   // Agregar Clase
   li.className = "list-group-item";
   // Agregar nodo de texto con valor de entrada
@@ -43,10 +45,13 @@ form.onsubmit = function agregarItem(e) {
 
   // Agregar li a la lista
   itemLista.appendChild(li);
+
+  // Limpio el Input
+  nuevoItem.value = "";
 };
 
 // Eliminar Item
-itemLista.onclick = function eliminarItem(e) {
+itemLista.onclick = function(e) {
   if (e.target.classList.contains("eliminar")) {
     if (confirm("Confirma que desea eliminar el elemento?")) {
       var li = e.target.parentElement;
@@ -56,11 +61,11 @@ itemLista.onclick = function eliminarItem(e) {
 };
 
 // Filtrar Item
-busqueda.onkeyup = function filtrarItems(e) {
+busqueda.onkeyup = function(e) {
   // convertir texto a minúsculas
-  var text = e.target.value.toLowerCase();
+  let text = e.target.value.toLowerCase();
   // Obtener lista
-  var items = itemLista.getElementsByTagName("li");
+  let items = itemLista.getElementsByTagName("li");
   // Convertir a Array
   Array.from(items).forEach(function(item) {
     var itemNombre = item.firstChild.textContent;
