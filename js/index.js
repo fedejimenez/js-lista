@@ -72,9 +72,9 @@ busqueda.onkeyup = function(e) {
   // console.log(arreglo);
 
   arreglo.forEach(function(item) {
-    const itemNombre = item.firstChild.textContent;
-    console.log(item);
-    if (itemNombre.toLowerCase().indexOf(text)) {
+    const contenidoLista = item.firstChild.textContent; // Returns a String, representing the text of the node and all its descendants.
+    console.log(contenidoLista);
+    if (contenidoLista.toLowerCase().indexOf(text) != -1) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
