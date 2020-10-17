@@ -1,5 +1,5 @@
 const form = document.querySelector("#form");
-const itemLista = document.querySelector("#items");
+const listaItems = document.querySelector("#items");
 const busqueda = document.querySelector("#busqueda");
 
 // Evento de envío de formulario
@@ -29,8 +29,8 @@ form.onsubmit = function(e) {
   // Agregar Clase
   li.className = "list-group-item";
   // Agregar nodo de texto con valor de entrada
-  li.appendChild(document.createTextNode(nuevoItem.value));
-
+  // li.appendChild(document.createTextNode(nuevoItem.value));
+  li.innerHTML = nuevoItem.value; // otra forma
   // Crear el botón eliminar
   const botonEliminar = document.createElement("button");
 
@@ -38,24 +38,25 @@ form.onsubmit = function(e) {
   botonEliminar.className = "btn btn-danger btn-sm float-right eliminar";
 
   // Añadir nodo de texto
-  botonEliminar.appendChild(document.createTextNode("X"));
-
+  // botonEliminar.appendChild(document.createTextNode("X"));
+  botonEliminar.innerHTML = "X";
   // Agregar botón a li
   li.appendChild(botonEliminar);
 
   // Agregar li a la lista
-  itemLista.appendChild(li);
+  listaItems.appendChild(li);
 
   // Limpio el Input
   nuevoItem.value = "";
 };
 
 // Eliminar Item
-itemLista.onclick = function(e) {
+listaItems.onclick = function(e) {
+  console.log(e.target);
   if (e.target.classList.contains("eliminar")) {
     if (confirm("Confirma que desea eliminar el elemento?")) {
       const li = e.target.parentElement;
-      itemLista.removeChild(li);
+      listaItems.removeChild(li);
     }
   }
 };
@@ -65,11 +66,15 @@ busqueda.onkeyup = function(e) {
   // convertir texto a minúsculas
   const text = e.target.value.toLowerCase();
   // Obtener lista
-  const items = itemLista.getElementsByTagName("li");
+  const items = listaItems.querySelectorAll("li");
   // Convertir a Array
-  Array.from(items).forEach(function(item) {
+  const arreglo = Array.from(items);
+  // console.log(arreglo);
+
+  arreglo.forEach(function(item) {
     const itemNombre = item.firstChild.textContent;
-    if (itemNombre.toLowerCase().indexOf(text) != -1) {
+    console.log(item);
+    if (itemNombre.toLowerCase().indexOf(text)) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
