@@ -1,2 +1,3 @@
-# js-lista-alumnos
-Ejercicio Lista de Alumnos - Curso Intro a JS
+# js-lista
+
+Ejercicio Lista - Curso Intro a JS
