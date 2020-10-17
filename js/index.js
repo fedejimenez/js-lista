@@ -1,6 +1,6 @@
 const form = document.querySelector("#form");
 const listaItems = document.querySelector("#items");
-const busqueda = document.querySelector("#busqueda");
+// const busqueda = document.querySelector("#busqueda");
 
 // Evento de envío de formulario
 // form.onsubmit = agregarItem;     1° FORMA
